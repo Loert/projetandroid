@@ -5,20 +5,25 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ListeSpectacles extends ActionBarActivity {
-    TextView rbd = null;
     String displayText = null;
+    List<String> listeSpectacles = null;
+    ListView list = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_spectacles);
-        rbd = (TextView) findViewById(R.id.retourDB);
-        AsyncCallWS task = new AsyncCallWS();
-        //Call execute
-        task.execute();
+        list = (ListView) findViewById(R.id.listeTest);
+        AsyncCallListeSpectacles task2 = new AsyncCallListeSpectacles();
+        task2.execute();
     }
 
     @Override
@@ -43,18 +48,19 @@ public class ListeSpectacles extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class AsyncCallWS extends AsyncTask<String, Void, Void> {
+    private class AsyncCallListeSpectacles extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
             //Invoke webservice
-            displayText = WebServiceSpectacles.invokeSpectacle(1, "getSpectacle");
+            listeSpectacles = WebServiceSpectacles.invokeListeSpectacle("getListeSpectacle");
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
             //Set response
-            rbd.setText(displayText);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listeSpectacles);
+            list.setAdapter(adapter);
         }
     }
 }

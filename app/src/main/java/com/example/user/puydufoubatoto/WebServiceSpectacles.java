@@ -7,6 +7,9 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by USER on 13/06/2015.
  */
@@ -23,15 +26,15 @@ public class WebServiceSpectacles {
         // Create request
         SoapObject request = new SoapObject(NAMESPACE, webMethName);
         // Property which holds input parameters
-        PropertyInfo sayHelloPI = new PropertyInfo();
+        PropertyInfo PI = new PropertyInfo();
         // Set Name
-        sayHelloPI.setName("ID");
+        PI.setName("ID");
         // Set Value
-        sayHelloPI.setValue(id);
+        PI.setValue(id);
         // Set dataType
-        sayHelloPI.setType(String.class);
+        PI.setType(String.class);
         // Add the property to request object
-        request.addProperty(sayHelloPI);
+        request.addProperty(PI);
         // Create envelope
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
@@ -56,5 +59,39 @@ public class WebServiceSpectacles {
         }
         //Return resTxt to calling object
         return resTxt;
+    }
+
+    public static List<String> invokeListeSpectacle(String webMethName) {
+        List<String> listeNoms = new ArrayList<String>();
+        // Create request
+        SoapObject request = new SoapObject(NAMESPACE, webMethName);
+        // Create envelope
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        // Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        // Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        try {
+            // Invoke web service
+            androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
+            // Get the response
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            // Assign it to resTxt variable static variable
+            for(int i= 0; i< response.getPropertyCount(); i++){
+                SoapObject object = (SoapObject)response.getProperty(i);
+                listeNoms.add(object.getProperty("nom").toString());
+            }
+            //listeNoms.add(response.getProperty("nom").toString());
+
+        } catch (Exception e) {
+            //Print error
+            e.printStackTrace();
+            //Assign error message to resTxt
+            listeNoms.add("Error occured");
+        }
+        //Return resTxt to calling object
+        return listeNoms;
     }
 }
