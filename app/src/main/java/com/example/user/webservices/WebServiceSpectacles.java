@@ -1,4 +1,4 @@
-package com.example.user.puydufoubatoto;
+package com.example.user.webservices;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
