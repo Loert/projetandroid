@@ -13,11 +13,11 @@ public class Spectacle {
     private double Latitude;
     private double Longitude;
 
-    public void Spectacle(){
+    public Spectacle(){
 
     }
 
-    public void Spectacle(int id,String nom,String description, int duree,String date_creation,int nombre_acteurs,double latitude,double longitude){
+    public Spectacle(int id,String nom,String description, String date_creation,int duree,int nombre_acteurs,double latitude,double longitude){
         this.Id = id;
         this.Nom = nom;
         this.Description = description;

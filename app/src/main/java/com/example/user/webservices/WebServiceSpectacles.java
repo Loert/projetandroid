@@ -1,5 +1,7 @@
 package com.example.user.webservices;
 
+import com.example.user.entities.Spectacle;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
@@ -61,8 +63,8 @@ public class WebServiceSpectacles {
         return resTxt;
     }
 
-    public static List<String> invokeListeSpectacle(String webMethName) {
-        List<String> listeNoms = new ArrayList<String>();
+    public static List<Spectacle> invokeListeSpectacle(String webMethName) {
+        List<Spectacle> listeSpectacles = new ArrayList<Spectacle>();
         // Create request
         SoapObject request = new SoapObject(NAMESPACE, webMethName);
         // Create envelope
@@ -81,7 +83,8 @@ public class WebServiceSpectacles {
             // Assign it to resTxt variable static variable
             for(int i= 0; i< response.getPropertyCount(); i++){
                 SoapObject object = (SoapObject)response.getProperty(i);
-                listeNoms.add(object.getProperty("nom").toString());
+                Spectacle spectacle = new Spectacle(Integer.parseInt(object.getProperty("id").toString()),object.getProperty("nom").toString(),object.getProperty("description").toString(),object.getProperty("dateCreation").toString(),Integer.parseInt(object.getProperty("duree").toString()),Integer.parseInt(object.getProperty("nombreActeurs").toString()),Double.parseDouble(object.getProperty("latitude").toString()),Double.parseDouble(object.getProperty("longitude").toString()));
+                listeSpectacles.add(spectacle);
             }
             //listeNoms.add(response.getProperty("nom").toString());
 
@@ -89,9 +92,9 @@ public class WebServiceSpectacles {
             //Print error
             e.printStackTrace();
             //Assign error message to resTxt
-            listeNoms.add("Error occured");
+            //listeSpectacles.add("Error occured");
         }
         //Return resTxt to calling object
-        return listeNoms;
+        return listeSpectacles;
     }
 }

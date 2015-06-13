@@ -8,14 +8,16 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.user.entities.Spectacle;
 import com.example.user.webservices.WebServiceSpectacles;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ListeSpectacles extends ActionBarActivity {
     String displayText = null;
-    List<String> listeSpectacles = null;
+    List<Spectacle> listeSpectacles = null;
     ListView list = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,11 @@ public class ListeSpectacles extends ActionBarActivity {
         @Override
         protected void onPostExecute(Void result) {
             //Set response
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listeSpectacles);
+            List<String> listeTitres = new ArrayList<String>();
+            for(int i = 0;i < listeSpectacles.size();i++){
+                listeTitres.add(listeSpectacles.get(i).getNom());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listeTitres);
             list.setAdapter(adapter);
         }
     }
