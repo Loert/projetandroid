@@ -4,14 +4,23 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.Toast;
 
 
-public class Plan extends ActionBarActivity {
-
+public class Plan extends ActionBarActivity implements View.OnClickListener {
+    private Button bPlanA = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_plan);
+        bPlanA = (Button) findViewById(R.id.BoutonPlanA);
+        bPlanA.setOnClickListener(this);
     }
 
     @Override
@@ -34,5 +43,12 @@ public class Plan extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.BoutonPlanA){
+            Toast.makeText(getApplicationContext(),"Les îles de Clovis",Toast.LENGTH_LONG).show();
+        }
     }
 }
