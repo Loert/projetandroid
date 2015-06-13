@@ -48,7 +48,7 @@ public class Plan extends ActionBarActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.BoutonPlanA){
-            Toast.makeText(getApplicationContext(),"Les îles de Clovis",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Les iles de Clovis",Toast.LENGTH_LONG).show();
         }
     }
 }

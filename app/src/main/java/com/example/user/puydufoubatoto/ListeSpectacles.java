@@ -1,31 +1,30 @@
 package com.example.user.puydufoubatoto;
 
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 
-public class Home extends ActionBarActivity implements View.OnClickListener{
-    private Button bPlan = null;
-    private Button bListeSpectacles = null;
+public class ListeSpectacles extends ActionBarActivity {
+    TextView rbd = null;
+    String displayText = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        bPlan = (Button) findViewById(R.id.BoutonVoirPlan);
-        bListeSpectacles = (Button) findViewById(R.id.BoutonListeSpectacles);
-        bPlan.setOnClickListener(this);
-        bListeSpectacles.setOnClickListener(this);
+        setContentView(R.layout.activity_liste_spectacles);
+        rbd = (TextView) findViewById(R.id.retourDB);
+        AsyncCallWS task = new AsyncCallWS();
+        //Call execute
+        task.execute();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home, menu);
+        getMenuInflater().inflate(R.menu.menu_liste_spectacles, menu);
         return true;
     }
 
@@ -44,15 +43,18 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View view) {
-        if(view.getId() == R.id.BoutonVoirPlan){
-            Intent i = new Intent(Home.this,Plan.class);
-            startActivity(i);
+    private class AsyncCallWS extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            //Invoke webservice
+            displayText = WebServiceSpectacles.invokeSpectacle(1, "getSpectacle");
+            return null;
         }
-        else if(view.getId() == R.id.BoutonListeSpectacles){
-            Intent i = new Intent(Home.this,ListeSpectacles.class);
-            startActivity(i);
+
+        @Override
+        protected void onPostExecute(Void result) {
+            //Set response
+            rbd.setText(displayText);
         }
     }
 }
