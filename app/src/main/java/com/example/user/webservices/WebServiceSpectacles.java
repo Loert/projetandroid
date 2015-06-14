@@ -19,12 +19,12 @@ public class WebServiceSpectacles {
     //Namespace of the Webservice - can be found in WSDL
     private static String NAMESPACE = "http://puydufou.ws.com/";
     //Webservice URL - WSDL File location
-    private static String URL = "http://192.168.1.49:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
+    private static String URL = "http://192.168.0.12:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://puydufou.ws.com/";
 
-    public static String invokeSpectacle(int id, String webMethName) {
-        String resTxt = null;
+    public static Spectacle invokeSpectacle(int id, String webMethName) {
+        Spectacle resTxt = null;
         // Create request
         SoapObject request = new SoapObject(NAMESPACE, webMethName);
         // Property which holds input parameters
@@ -34,7 +34,7 @@ public class WebServiceSpectacles {
         // Set Value
         PI.setValue(id);
         // Set dataType
-        PI.setType(String.class);
+        PI.setType(int.class);
         // Add the property to request object
         request.addProperty(PI);
         // Create envelope
@@ -49,15 +49,17 @@ public class WebServiceSpectacles {
             // Invoke web service
             androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
             // Get the response
-            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+            //SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
             // Assign it to resTxt variable static variable
-            resTxt = response.toString();
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            SoapObject object = (SoapObject) response.getProperty(0);
+            resTxt = new Spectacle(Integer.parseInt(object.getProperty("id").toString()),object.getProperty("nom").toString(),object.getProperty("description").toString(),object.getProperty("dateCreation").toString(),Integer.parseInt(object.getProperty("duree").toString()),Integer.parseInt(object.getProperty("nombreActeurs").toString()),Double.parseDouble(object.getProperty("latitude").toString()),Double.parseDouble(object.getProperty("longitude").toString()));
 
         } catch (Exception e) {
             //Print error
             e.printStackTrace();
             //Assign error message to resTxt
-            resTxt = "Error occured";
+            //resTxt = "Error occured";
         }
         //Return resTxt to calling object
         return resTxt;
@@ -80,6 +82,7 @@ public class WebServiceSpectacles {
             androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
             // Get the response
             SoapObject response = (SoapObject) envelope.bodyIn;
+            System.out.println(response.toString());
             // Assign it to resTxt variable static variable
             for(int i= 0; i< response.getPropertyCount(); i++){
                 SoapObject object = (SoapObject)response.getProperty(i);

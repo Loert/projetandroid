@@ -1,5 +1,6 @@
 package com.example.user.puydufoubatoto;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,7 +49,10 @@ public class Plan extends ActionBarActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.BoutonPlanA){
-            Toast.makeText(getApplicationContext(),"Les iles de Clovis",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"Les iles de Clovis",Toast.LENGTH_LONG).show();
+            Intent i = new Intent(Plan.this,FicheSpectacle.class);
+            i.putExtra("idSpectacle",1);
+            startActivity(i);
         }
     }
 }

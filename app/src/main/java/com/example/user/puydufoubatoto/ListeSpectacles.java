@@ -1,5 +1,6 @@
 package com.example.user.puydufoubatoto;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -59,7 +60,9 @@ public class ListeSpectacles extends ActionBarActivity implements AdapterView.On
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         Spectacle spectacle = (Spectacle)list.getAdapter().getItem(position);
-        Toast.makeText(getApplicationContext(),"Vous avez clique sur le spectacle " + spectacle.getNom(),Toast.LENGTH_LONG).show();
+        Intent i = new Intent(ListeSpectacles.this,FicheSpectacle.class);
+        i.putExtra("idSpectacle",spectacle.getId());
+        startActivity(i);
     }
 
     private class AsyncCallListeSpectacles extends AsyncTask<String, Void, Void> {
