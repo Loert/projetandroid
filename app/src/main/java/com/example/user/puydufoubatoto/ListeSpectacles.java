@@ -5,9 +5,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.user.adapter.ArraySpectaclesAdapter;
 import com.example.user.entities.Spectacle;
 import com.example.user.webservices.WebServiceSpectacles;
 
@@ -15,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListeSpectacles extends ActionBarActivity {
+public class ListeSpectacles extends ActionBarActivity implements AdapterView.OnItemClickListener {
     String displayText = null;
     List<Spectacle> listeSpectacles = null;
     ListView list = null;
@@ -24,8 +28,10 @@ public class ListeSpectacles extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_spectacles);
         list = (ListView) findViewById(R.id.listeTest);
+
         AsyncCallListeSpectacles task2 = new AsyncCallListeSpectacles();
         task2.execute();
+        list.setOnItemClickListener(this);
     }
 
     @Override
@@ -50,6 +56,12 @@ public class ListeSpectacles extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        Spectacle spectacle = (Spectacle)list.getAdapter().getItem(position);
+        Toast.makeText(getApplicationContext(),"Vous avez clique sur le spectacle " + spectacle.getNom(),Toast.LENGTH_LONG).show();
+    }
+
     private class AsyncCallListeSpectacles extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
@@ -65,8 +77,8 @@ public class ListeSpectacles extends ActionBarActivity {
             for(int i = 0;i < listeSpectacles.size();i++){
                 listeTitres.add(listeSpectacles.get(i).getNom());
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listeTitres);
-            list.setAdapter(adapter);
+
+            list.setAdapter(new ArraySpectaclesAdapter(getApplicationContext(),listeSpectacles));
         }
     }
 }
