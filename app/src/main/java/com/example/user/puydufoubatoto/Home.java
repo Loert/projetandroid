@@ -12,14 +12,17 @@ import android.widget.Button;
 public class Home extends ActionBarActivity implements View.OnClickListener{
     private Button bPlan = null;
     private Button bListeSpectacles = null;
+    private Button bListeServices = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         bPlan = (Button) findViewById(R.id.BoutonVoirPlan);
         bListeSpectacles = (Button) findViewById(R.id.BoutonListeSpectacles);
+        bListeServices = (Button) findViewById(R.id.BoutonVoirServices);
         bPlan.setOnClickListener(this);
         bListeSpectacles.setOnClickListener(this);
+        bListeServices.setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +55,10 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         }
         else if(view.getId() == R.id.BoutonListeSpectacles){
             Intent i = new Intent(Home.this,ListeSpectacles.class);
+            startActivity(i);
+        }
+        else if(view.getId() == R.id.BoutonVoirServices){
+            Intent i = new Intent(Home.this,ListeRestaurant.class);
             startActivity(i);
         }
     }

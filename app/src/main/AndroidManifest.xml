@@ -34,6 +34,10 @@
             android:name=".FicheSpectacle"
             android:label="@string/title_activity_fiche_spectacle" >
         </activity>
+        <activity
+            android:name=".ListeRestaurant"
+            android:label="@string/title_activity_liste_restaurant" >
+        </activity>
     </application>
 
 </manifest>
