@@ -75,7 +75,7 @@ public class FicheSpectacle extends ActionBarActivity {
             titre.setText(resultatSpectacle.getNom());
             description.setText(resultatSpectacle.getDescription());
             nombreacteurs.setText(resultatSpectacle.getNombre_acteurs() + "acteurs");
-            datecreation.setText("Date de création : "+ resultatSpectacle.getDate_creation());
+            datecreation.setText("Date de crï¿½ation : "+ resultatSpectacle.getDate_creation());
         }
     }
 }
