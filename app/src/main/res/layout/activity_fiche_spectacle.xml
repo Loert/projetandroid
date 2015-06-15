@@ -1,4 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -24,7 +28,7 @@
         android:layout_below="@+id/titreSpectacle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="80px"
         android:textSize="50px" />
 
     <TextView
@@ -33,11 +37,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nombre acteurs"
         android:id="@+id/nbacteursSpectacle"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="53dp"
         android:textSize="45px"
         android:layout_below="@+id/descriptionSpectacle"
-        android:layout_alignRight="@+id/datecreationSpectacle"
-        android:layout_alignEnd="@+id/datecreationSpectacle" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +52,7 @@
         android:layout_below="@+id/nbacteursSpectacle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="30px"
         android:textSize="45px" />
 
     <TextView
@@ -57,9 +61,38 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Note : /5"
         android:id="@+id/noteSpectacle"
-        android:layout_centerVertical="true"
+        android:textSize="45px"
+        android:layout_below="@+id/datecreationSpectacle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="45px" />
+        android:layout_marginTop="30px" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Notez ce spectacle"
+        android:id="@+id/textView2"
+        android:textSize="45px"
+        android:layout_marginTop="50px"
+        android:layout_below="@+id/noteSpectacle"
+        android:layout_centerHorizontal="true" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notationBar"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:stepSize="1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enregistrer"
+        android:id="@+id/BoutonEnregistreNoteSpectacle"
+        android:layout_below="@+id/notationBar"
+        android:layout_centerHorizontal="true"
+        android:enabled="true" />
 </RelativeLayout>
+</ScrollView>

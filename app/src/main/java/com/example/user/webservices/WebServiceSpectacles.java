@@ -19,7 +19,7 @@ public class WebServiceSpectacles {
     //Namespace of the Webservice - can be found in WSDL
     private static String NAMESPACE = "http://puydufou.ws.com/";
     //Webservice URL - WSDL File location
-    private static String URL = "http://192.168.0.12:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
+    private static String URL = "http://10.151.128.10:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://puydufou.ws.com/";
 
@@ -99,5 +99,45 @@ public class WebServiceSpectacles {
         }
         //Return resTxt to calling object
         return listeSpectacles;
+    }
+
+    public static void invokeEnregistreNoteSpectacle(int id,int note, String webMethName) {
+        Spectacle resTxt = null;
+        // Create request
+        SoapObject request = new SoapObject(NAMESPACE, webMethName);
+        // Property which holds input parameters
+        PropertyInfo PI = new PropertyInfo();
+        // Set Name
+        PI.setName("id");
+        // Set Value
+        PI.setValue(id);
+        // Set dataType
+        PI.setType(int.class);
+        // Add the property to request object
+        request.addProperty(PI);
+        PropertyInfo PI2 = new PropertyInfo();
+        PI2.setName("note");
+        PI2.setValue(note);
+        PI2.setType(int.class);
+        request.addProperty(PI2);
+        // Create envelope
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        // Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        // Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        try {
+            // Invoke web service
+            androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
+        } catch (Exception e) {
+            //Print error
+            e.printStackTrace();
+            //Assign error message to resTxt
+            //resTxt = "Error occured";
+        }
+        //Return resTxt to calling object
+        //return resTxt;
     }
 }
