@@ -6,6 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.adapter.ArraySpectaclesAdapter;
@@ -18,13 +21,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FicheSpectacle extends ActionBarActivity {
+public class FicheSpectacle extends ActionBarActivity implements View.OnClickListener {
     TextView titre = null;
     TextView description = null;
     TextView nombreacteurs = null;
     TextView datecreation = null;
     Spectacle resultatSpectacle = null;
     int IdSpectacle = 0;
+    Button bNotation = null;
+    RatingBar barrenote = null;
+    boolean dejaNote = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +39,11 @@ public class FicheSpectacle extends ActionBarActivity {
         description = (TextView) findViewById(R.id.descriptionSpectacle);
         nombreacteurs = (TextView) findViewById(R.id.nbacteursSpectacle);
         datecreation = (TextView) findViewById(R.id.datecreationSpectacle);
+        barrenote = (RatingBar) findViewById(R.id.notationBar);
         Intent retourIntent = getIntent();
         IdSpectacle = retourIntent.getIntExtra("idSpectacle", 0);
+        bNotation = (Button) findViewById(R.id.BoutonEnregistreNoteSpectacle);
+        bNotation.setOnClickListener(this);
         AsyncCallSpectacle task = new AsyncCallSpectacle();
         task.execute();
     }
@@ -61,6 +70,16 @@ public class FicheSpectacle extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.BoutonEnregistreNoteSpectacle){
+            if(!this.dejaNote){
+                AsyncCallNoteSpectacle taskNoteSpectacle = new AsyncCallNoteSpectacle();
+                taskNoteSpectacle.execute();
+            }
+        }
+    }
+
     private class AsyncCallSpectacle extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
@@ -74,8 +93,24 @@ public class FicheSpectacle extends ActionBarActivity {
             //Set response
             titre.setText(resultatSpectacle.getNom());
             description.setText(resultatSpectacle.getDescription());
-            nombreacteurs.setText(resultatSpectacle.getNombre_acteurs() + "acteurs");
-            datecreation.setText("Date de cr�ation : "+ resultatSpectacle.getDate_creation());
+            nombreacteurs.setText(resultatSpectacle.getNombre_acteurs() + " acteurs");
+            datecreation.setText("Date de création : "+ resultatSpectacle.getDate_creation());
+        }
+    }
+
+    private class AsyncCallNoteSpectacle extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            //Invoke webservice
+            WebServiceSpectacles.invokeEnregistreNoteSpectacle(IdSpectacle,(int)barrenote.getRating(), "noteSpectacle");
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            //Set response
+            dejaNote = true;
+            bNotation.setEnabled(false);
         }
     }
 }
