@@ -140,4 +140,41 @@ public class WebServiceSpectacles {
         //Return resTxt to calling object
         //return resTxt;
     }
+
+    public static float invokeGetNoteSpectacle(int id, String webMethName) {
+        float resTxt = 0;
+        // Create request
+        SoapObject request = new SoapObject(NAMESPACE, webMethName);
+        // Property which holds input parameters
+        PropertyInfo PI = new PropertyInfo();
+        // Set Name
+        PI.setName("id");
+        // Set Value
+        PI.setValue(id);
+        // Set dataType
+        PI.setType(int.class);
+        // Add the property to request object
+        request.addProperty(PI);
+        // Create envelope
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        // Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        // Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        try {
+            // Invoke web service
+            androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
+            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+            resTxt = Float.parseFloat(response.toString());
+        } catch (Exception e) {
+            //Print error
+            e.printStackTrace();
+            //Assign error message to resTxt
+            //resTxt = "Error occured";
+        }
+        //Return resTxt to calling object
+        return resTxt;
+    }
 }

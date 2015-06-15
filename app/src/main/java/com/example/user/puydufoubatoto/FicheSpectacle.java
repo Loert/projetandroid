@@ -17,6 +17,7 @@ import com.example.user.webservices.WebServiceSpectacles;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +27,13 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
     TextView description = null;
     TextView nombreacteurs = null;
     TextView datecreation = null;
+    TextView note = null;
     Spectacle resultatSpectacle = null;
     int IdSpectacle = 0;
     Button bNotation = null;
     RatingBar barrenote = null;
     boolean dejaNote = false;
+    float noteSpectacle = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,7 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
         description = (TextView) findViewById(R.id.descriptionSpectacle);
         nombreacteurs = (TextView) findViewById(R.id.nbacteursSpectacle);
         datecreation = (TextView) findViewById(R.id.datecreationSpectacle);
+        note = (TextView) findViewById(R.id.noteSpectacle);
         barrenote = (RatingBar) findViewById(R.id.notationBar);
         Intent retourIntent = getIntent();
         IdSpectacle = retourIntent.getIntExtra("idSpectacle", 0);
@@ -46,6 +50,8 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
         bNotation.setOnClickListener(this);
         AsyncCallSpectacle task = new AsyncCallSpectacle();
         task.execute();
+        AsyncCallgetNoteSpectacle task2 = new AsyncCallgetNoteSpectacle();
+        task2.execute();
     }
 
     @Override
@@ -111,6 +117,22 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
             //Set response
             dejaNote = true;
             bNotation.setEnabled(false);
+        }
+    }
+
+    private class AsyncCallgetNoteSpectacle extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            //Invoke webservice
+            noteSpectacle = WebServiceSpectacles.invokeGetNoteSpectacle(IdSpectacle, "getNoteSpectacle");
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            //Set response
+            DecimalFormat df = new DecimalFormat("0.##");
+            note.setText("Note : "+df.format(noteSpectacle)+" / 5");
         }
     }
 }
