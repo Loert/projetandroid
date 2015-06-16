@@ -8,4 +8,5 @@
     <string name="title_activity_liste_spectacles">Liste des spectacles</string>
     <string name="title_activity_fiche_spectacle">FicheSpectacle</string>
     <string name="title_activity_liste_restaurant">ListeRestaurant</string>
+    <string name="title_activity_fiche_restaurant">FicheRestaurant</string>
 </resources>

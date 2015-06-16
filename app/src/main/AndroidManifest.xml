@@ -38,6 +38,10 @@
             android:name=".ListeRestaurant"
             android:label="@string/title_activity_liste_restaurant" >
         </activity>
+        <activity
+            android:name=".FicheRestaurant"
+            android:label="@string/title_activity_fiche_restaurant" >
+        </activity>
     </application>
 
 </manifest>

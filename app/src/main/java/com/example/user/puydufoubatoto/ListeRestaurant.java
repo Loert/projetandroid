@@ -1,5 +1,6 @@
 package com.example.user.puydufoubatoto;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -58,8 +59,11 @@ public class ListeRestaurant extends ActionBarActivity implements AdapterView.On
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(getApplicationContext(),"Cooucou",Toast.LENGTH_LONG).show();
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Restaurant restaurant = (Restaurant)list.getAdapter().getItem(position);
+        Intent i = new Intent(ListeRestaurant.this,FicheRestaurant.class);
+        i.putExtra("idRestaurant",restaurant.getId());
+        startActivity(i);
     }
 
     private class AsyncCallListeRestaurants extends AsyncTask<String, Void, Void> {
