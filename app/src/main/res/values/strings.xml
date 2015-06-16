@@ -10,4 +10,6 @@
     <string name="title_activity_planning" />
     <string name="title_activity_ajouterspectacle">ajouterspectacle</string>
     <string name="title_activity_planningpersonnel">planningpersonnel</string>
+    <string name="title_activity_liste_restaurant">ListeRestaurant</string>
+    <string name="title_activity_fiche_restaurant">FicheRestaurant</string>
 </resources>
