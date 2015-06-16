@@ -80,7 +80,6 @@ public class ListeSpectacles extends ActionBarActivity implements AdapterView.On
             for(int i = 0;i < listeSpectacles.size();i++){
                 listeTitres.add(listeSpectacles.get(i).getNom());
             }
-
             list.setAdapter(new ArraySpectaclesAdapter(getApplicationContext(),listeSpectacles));
         }
     }

@@ -20,7 +20,7 @@ public class WebServiceSpectacles {
     //Namespace of the Webservice - can be found in WSDL
     private static String NAMESPACE = "http://puydufou.ws.com/";
     //Webservice URL - WSDL File location
-    private static String URL = "http://10.151.128.10:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
+    private static String URL = "http://192.168.0.12:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://puydufou.ws.com/";
 
@@ -223,5 +223,51 @@ public class WebServiceSpectacles {
         }
         //Return resTxt to calling object
         return resTxt;
+    }
+
+    public static  List<HoraireSpectacle> ProchainsHoraireSpectacle(int id, String webMethName){
+        List<HoraireSpectacle> ListeHoraire = new ArrayList<HoraireSpectacle>();
+        // Create request
+        SoapObject request = new SoapObject(NAMESPACE, webMethName);
+        PropertyInfo PI = new PropertyInfo();
+        // Set Name
+        PI.setName("id");
+        // Set Value
+        PI.setValue(id);
+        // Set dataType
+        PI.setType(int.class);
+        // Add the property to request object
+        request.addProperty(PI);
+        // Create envelope
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        // Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        // Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        try {
+            // Invoke web service
+            androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
+            // Get the response
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            System.out.println(response.toString());
+            // Assign it to resTxt variable static variable
+            for(int i= 0; i< response.getPropertyCount(); i++){
+                SoapObject object = (SoapObject)response.getProperty(i);
+                HoraireSpectacle Horaire = new HoraireSpectacle(Integer.parseInt(object.getProperty("id").toString()),object.getProperty("heureDebut").toString());
+                ListeHoraire.add(Horaire);
+            }
+            //listeNoms.add(response.getProperty("nom").toString());
+
+        } catch (Exception e) {
+            //Print error
+            e.printStackTrace();
+            //Assign error message to resTxt
+            //listeSpectacles.add("Error occured");
+        }
+        //Return resTxt to calling object
+        //System.out.println(ListeHoraire);
+        return ListeHoraire;
     }
 }

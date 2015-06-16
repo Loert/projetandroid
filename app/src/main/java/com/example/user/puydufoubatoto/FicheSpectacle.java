@@ -8,10 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.user.adapter.ArrayProchainsHorairesAdapter;
 import com.example.user.adapter.ArraySpectaclesAdapter;
+import com.example.user.entities.HoraireSpectacle;
 import com.example.user.entities.Spectacle;
 import com.example.user.webservices.WebServiceSpectacles;
 
@@ -34,6 +37,8 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
     RatingBar barrenote = null;
     boolean dejaNote = false;
     float noteSpectacle = 0;
+    ListView lHorairesSpectacles = null;
+    List<HoraireSpectacle> lHoraires = new ArrayList<HoraireSpectacle>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +53,13 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
         IdSpectacle = retourIntent.getIntExtra("idSpectacle", 0);
         bNotation = (Button) findViewById(R.id.BoutonEnregistreNoteSpectacle);
         bNotation.setOnClickListener(this);
+        lHorairesSpectacles = (ListView) findViewById(R.id.listeProchainsHoraires);
         AsyncCallSpectacle task = new AsyncCallSpectacle();
         task.execute();
         AsyncCallgetNoteSpectacle task2 = new AsyncCallgetNoteSpectacle();
         task2.execute();
+        AsyncCallgetProchainHoraireSpectacle task3 = new AsyncCallgetProchainHoraireSpectacle();
+        task3.execute();
     }
 
     @Override
@@ -132,7 +140,23 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
         protected void onPostExecute(Void result) {
             //Set response
             DecimalFormat df = new DecimalFormat("0.##");
-            note.setText("Note : "+df.format(noteSpectacle)+" / 5");
+            note.setText("Note : " + df.format(noteSpectacle) + " / 5");
+        }
+    }
+
+    private class AsyncCallgetProchainHoraireSpectacle extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            //Invoke webservice
+            lHoraires = WebServiceSpectacles.ProchainsHoraireSpectacle(IdSpectacle, "getListeProchainsHoraireFromSpectacleId");
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            //Set response
+            System.out.println("Les horaires de la db : " + lHoraires);
+            lHorairesSpectacles.setAdapter(new ArrayProchainsHorairesAdapter(getApplicationContext(), lHoraires));
         }
     }
 }
