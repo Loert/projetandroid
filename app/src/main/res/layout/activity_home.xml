@@ -47,4 +47,14 @@
         android:layout_alignEnd="@+id/BoutonSpectacleVenir"
         android:layout_alignLeft="@+id/BoutonSpectacleVenir"
         android:layout_alignStart="@+id/BoutonSpectacleVenir" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="planning"
+        android:id="@+id/BoutonPlanning"
+        android:layout_above="@+id/BoutonListeSpectacles"
+        android:layout_alignRight="@+id/BoutonListeSpectacles"
+        android:layout_alignEnd="@+id/BoutonListeSpectacles"
+        android:layout_marginBottom="43dp" />
 </RelativeLayout>

@@ -34,6 +34,18 @@
             android:name=".FicheSpectacle"
             android:label="@string/title_activity_fiche_spectacle" >
         </activity>
+        <activity
+            android:name=".Planning"
+            android:label="@string/title_activity_planning" >
+        </activity>
+        <activity
+            android:name=".ajouterspectacle"
+            android:label="@string/title_activity_ajouterspectacle" >
+        </activity>
+        <activity
+            android:name=".planningpersonnel"
+            android:label="@string/title_activity_planningpersonnel" >
+        </activity>
     </application>
 
 </manifest>
