@@ -1,6 +1,7 @@
 package com.example.user.adapter;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 
 import com.example.user.entities.Spectacle;
 import com.example.user.puydufoubatoto.R;
+import com.example.user.webservices.WebServiceSpectacles;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -19,6 +22,7 @@ import java.util.List;
 public class ArraySpectaclesAdapter extends ArrayAdapter {
     List<Spectacle> mSpectacles;
     LayoutInflater mInflater;
+
     public ArraySpectaclesAdapter(Context context,List<Spectacle> lSpectacles) {
         super(context, R.layout.listespectacle, lSpectacles);
         this.mSpectacles = lSpectacles;
@@ -43,4 +47,6 @@ public class ArraySpectaclesAdapter extends ArrayAdapter {
         sizeView.setText(String.valueOf(spectacle.getDuree()) + " minutes");
         return rowView;
     }
+
+
 }

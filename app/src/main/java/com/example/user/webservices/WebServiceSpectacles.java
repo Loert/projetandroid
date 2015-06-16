@@ -19,7 +19,7 @@ public class WebServiceSpectacles {
     //Namespace of the Webservice - can be found in WSDL
     private static String NAMESPACE = "http://puydufou.ws.com/";
     //Webservice URL - WSDL File location
-    private static String URL = "http://192.168.0.12:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
+    private static String URL = "http://10.151.128.10:8080/PuyDuFouWS/PuyDuFouWS?WSDL";
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://puydufou.ws.com/";
 
