@@ -1,5 +1,6 @@
 package com.example.user.webservices;
 
+import com.example.user.entities.HoraireSpectacle;
 import com.example.user.entities.Spectacle;
 
 import org.ksoap2.SoapEnvelope;
