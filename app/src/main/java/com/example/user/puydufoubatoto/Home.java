@@ -14,6 +14,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
     private Button bListeSpectacles = null;
     private Button bListeServices = null;
     private Button bPlanning = null;
+    private Button bOptimiseTemp = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,11 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         bPlan = (Button) findViewById(R.id.BoutonVoirPlan);
         bListeSpectacles = (Button) findViewById(R.id.BoutonListeSpectacles);
         bListeServices = (Button) findViewById(R.id.BoutonVoirServices);
+        bOptimiseTemp = (Button) findViewById(R.id.BoutonOptimiseTemp);
         bPlan.setOnClickListener(this);
         bListeSpectacles.setOnClickListener(this);
         bListeServices.setOnClickListener(this);
-
+        bOptimiseTemp.setOnClickListener(this);
         bPlanning = (Button) findViewById(R.id.BoutonPlanning);
         bPlanning.setOnClickListener(this);
     }
@@ -69,6 +71,10 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         }
         else if(view.getId() == R.id.BoutonVoirServices){
             Intent i = new Intent(Home.this,ListeRestaurant.class);
+            startActivity(i);
+        }
+        else if(view.getId() == R.id.BoutonOptimiseTemp){
+            Intent i = new Intent(Home.this,PlanningOptimise.class);
             startActivity(i);
         }
     }

@@ -19,8 +19,8 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onResume(){
-        Intent i = new Intent(MainActivity.this,Home.class);
-        startActivity(i);
+        //Intent i = new Intent(MainActivity.this,Home.class);
+        //startActivity(i);
     }
 
     @Override

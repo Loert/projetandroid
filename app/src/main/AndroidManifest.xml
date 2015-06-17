@@ -54,6 +54,10 @@
             android:name=".FicheRestaurant"
             android:label="@string/title_activity_fiche_restaurant" >
         </activity>
+        <activity
+            android:name=".PlanningOptimise"
+            android:label="@string/title_activity_planning_optimise" >
+        </activity>
     </application>
 
 </manifest>
