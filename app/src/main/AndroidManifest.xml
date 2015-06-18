@@ -35,6 +35,10 @@
             android:label="@string/title_activity_fiche_spectacle" >
         </activity>
         <activity
+            android:name=".Planning"
+            android:label="@string/title_activity_planning" >
+        </activity>
+        <activity
             android:name=".ajouterspectacle"
             android:label="@string/title_activity_ajouterspectacle" >
         </activity>
@@ -69,6 +73,10 @@
         <activity
             android:name=".SelectionneHorairePlanningPerso"
             android:label="@string/title_activity_selectionne_horaire_planning_perso" >
+        </activity>
+        <activity
+            android:name=".PlanningOptimise"
+            android:label="@string/title_activity_planning_optimise" >
         </activity>
     </application>
 

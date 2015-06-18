@@ -19,4 +19,5 @@
     <string name="title_activity_selectionne_horaire_planning_perso">
         SelectionneHorairePlanningPerso
     </string>
+    <string name="title_activity_planning_optimise">PlanningOptimise</string>
 </resources>

@@ -6,7 +6,7 @@ package com.example.user.entities;
 public class HoraireSpectacle {
     private int Id;
     private String Horaire;
-
+    private int IdSpectacle;
 
     public HoraireSpectacle(int id,String Horaire){
         this.Id = id;
@@ -18,4 +18,10 @@ public class HoraireSpectacle {
     }
 
     public String getHoraire(){return this.Horaire;}
+
+    public int getIdSpectacle(){return this.IdSpectacle;}
+
+    public void setIdSpectacle(int idsp){
+        this.IdSpectacle = idsp;
+    }
 }
