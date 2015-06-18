@@ -8,55 +8,60 @@
     android:background="@drawable/bghome">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="200px"
-        android:text="Plan du parc"
+        android:layout_width="fill_parent"
+        android:layout_height="150px"
         android:id="@+id/BoutonVoirPlan"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="false"
+        android:background="@drawable/boutonplan"
+        android:layout_toStartOf="@+id/BoutonVoirServices"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/BoutonVoirServices"
+        android:layout_toLeftOf="@+id/BoutonVoirServices" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="200px"
         android:text="Spectacles a venir"
         android:id="@+id/BoutonSpectacleVenir"
-        android:layout_alignTop="@+id/BoutonVoirPlan"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="200px"
-        android:text="Spectacles"
+        android:layout_height="100px"
         android:id="@+id/BoutonListeSpectacles"
-        android:layout_above="@+id/BoutonVoirPlan"
+        android:background="@drawable/boutonspectacle"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="42dp"
-        android:layout_alignRight="@+id/BoutonVoirPlan"
-        android:layout_alignEnd="@+id/BoutonVoirPlan" />
+        android:layout_toStartOf="@+id/BoutonPlanning"
+        android:layout_alignBottom="@+id/BoutonSpectacleVenir"
+        android:layout_toLeftOf="@+id/BoutonPlanning" />
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="200px"
-        android:text="Services"
+        android:layout_height="200dp"
         android:id="@+id/BoutonVoirServices"
-        android:layout_alignBottom="@+id/BoutonListeSpectacles"
-        android:layout_alignRight="@+id/BoutonSpectacleVenir"
-        android:layout_alignEnd="@+id/BoutonSpectacleVenir"
-        android:layout_alignLeft="@+id/BoutonSpectacleVenir"
-        android:layout_alignStart="@+id/BoutonSpectacleVenir" />
+        android:background="@drawable/boutonservice"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/BoutonListeSpectacles"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/BoutonSpectacleVenir"
+        android:layout_toRightOf="@+id/BoutonListeSpectacles"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="planning"
         android:id="@+id/BoutonPlanning"
-        android:layout_above="@+id/BoutonListeSpectacles"
-        android:layout_alignRight="@+id/BoutonListeSpectacles"
-        android:layout_alignEnd="@+id/BoutonListeSpectacles"
-        android:layout_marginBottom="43dp" />
+        android:layout_below="@+id/BoutonOptimiseTemp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -65,4 +70,5 @@
         android:id="@+id/BoutonOptimiseTemp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
