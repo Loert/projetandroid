@@ -55,4 +55,11 @@
         android:id="@+id/BoutonEnregistreNoteRestaurant"
         android:layout_below="@+id/BarreNoteRestaurant"
         android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listeMenu"
+        android:layout_below="@+id/BoutonEnregistreNoteRestaurant"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

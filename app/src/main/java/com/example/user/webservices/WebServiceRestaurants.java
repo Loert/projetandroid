@@ -1,5 +1,6 @@
 package com.example.user.webservices;
 
+import com.example.user.entities.MenuRestaurant;
 import com.example.user.entities.Restaurant;
 import com.example.user.entities.Spectacle;
 
@@ -168,6 +169,49 @@ public class WebServiceRestaurants {
             androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
             SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
             resTxt = Float.parseFloat(response.toString());
+        } catch (Exception e) {
+            //Print error
+            e.printStackTrace();
+            //Assign error message to resTxt
+            //resTxt = "Error occured";
+        }
+        //Return resTxt to calling object
+        return resTxt;
+    }
+
+    public static List<MenuRestaurant> invokeGetMenuRestaurant(int id, String webMethName) {
+        List<MenuRestaurant> resTxt = new ArrayList<>();
+        // Create request
+        SoapObject request = new SoapObject(NAMESPACE, webMethName);
+        // Property which holds input parameters
+        PropertyInfo PI = new PropertyInfo();
+        // Set Name
+        PI.setName("id");
+        // Set Value
+        PI.setValue(id);
+        // Set dataType
+        PI.setType(int.class);
+        // Add the property to request object
+        request.addProperty(PI);
+        // Create envelope
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        // Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        // Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+        try {
+            // Invoke web service
+            androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            System.out.println("Liste menu : " + response.toString());
+            for(int i = 0;i<response.getPropertyCount();i++){
+                SoapObject object = (SoapObject)response.getProperty(i);
+                MenuRestaurant menu = new MenuRestaurant(Integer.parseInt(object.getProperty("id").toString()),object.getProperty("titre").toString(),object.getProperty("description").toString(),Integer.parseInt(object.getProperty("idRestaurant").toString()),Float.parseFloat(object.getProperty("prix").toString()));
+                resTxt.add(menu);
+                System.out.println(menu.getTitre());
+            }
         } catch (Exception e) {
             //Print error
             e.printStackTrace();

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.user.adapter.ArrayPlanningOptimiseAdapter;
@@ -35,6 +36,7 @@ public class planningpersonnel extends ActionBarActivity implements View.OnClick
     HoraireSpectacle enCours = null;
     Spectacle speEnCours = null;
     int idSpeEncours = 0;
+    ProgressBar progression = null;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class planningpersonnel extends ActionBarActivity implements View.OnClick
         Button AjoutSpect  = (Button) findViewById(R.id.AjoutSpectacle);
         planOpti = (Button) findViewById(R.id.BoutonGenererPlanningOptimise);
         planOpti.setOnClickListener(this);
+        progression = (ProgressBar) findViewById(R.id.progressBar);
         AjoutSpect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +86,7 @@ public class planningpersonnel extends ActionBarActivity implements View.OnClick
                     spectacleBdd.open();
                     spectacleBdd.videPlanning();
                     spectacleBdd.close();
+                    progression.setVisibility(View.VISIBLE);
                     AsyncCallPlanningOpti task2 = new AsyncCallPlanningOpti();
                     task2.execute();
                 }
