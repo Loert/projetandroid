@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@drawable/parchemin">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Durée du spectacle"
             android:id="@+id/dureeSpectacleMonPlanning"
-            android:textColor="#ffaf580b"
+            android:textColor="#000000"
             android:layout_alignBottom="@+id/titreSpectacleMonPlannig"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
