@@ -79,8 +79,7 @@ public class SelectionneHorairePlanningPerso extends ActionBarActivity implement
         nouveauspectacle.setHoraireSpect(mHoraire.get(position).getHoraire());
         spectacleBDD.ajouterSpectacle(nouveauspectacle);
         Toast.makeText(this, "Le spectacle a bien été ajouté a votre planning", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(SelectionneHorairePlanningPerso.this,planningpersonnel.class);
-        startActivity(i);
+        this.finish();
     }
 
     private class AsyncCallHorairesSpectacle extends AsyncTask<String, Void, Void> {

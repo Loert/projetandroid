@@ -77,6 +77,11 @@ public class SpectacleBDD extends ActionBarActivity {
         return bdd.delete(TABLE_PLANNING, COL_ID + " = " + id, null);
     }
 
+    public void videPlanning(){
+        System.out.println("Vidage du planning");
+        bdd.delete(TABLE_PLANNING,null,null);
+    }
+
     /*public SpectacleSQLite getSpectacleWithTitre(String titre){
         //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
         Cursor c = bdd.query(TABLE_PLANNING, new String[] {COL_ID, COL_NOM, COL_DUREE,COL_HORAIRE}, COL_NOM + " LIKE \"" + titre +"\"", null, null, null, null);
@@ -85,7 +90,7 @@ public class SpectacleBDD extends ActionBarActivity {
 
     public List<SpectacleSQLite> ListeToutSpectacleSQLite(){
         // Recuperer la liste des spectacles de la base SQLite
-        Cursor c = bdd.rawQuery("SELECT * FROM table_planning ORDER BY ID_SPECT DESC",null);
+        Cursor c = bdd.rawQuery("SELECT * FROM table_planning ORDER BY ID_SPECT",null);
         return cursorToSpectacle(c);
 
     }

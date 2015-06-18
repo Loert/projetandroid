@@ -10,17 +10,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter un spectacle"
+        android:text="+ Spectacle"
         android:id="@+id/AjoutSpectacle"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Mon Planning"
         android:id="@+id/MonPlanning"
         android:layout_alignBaseline="@+id/AjoutSpectacle"
         android:layout_alignBottom="@+id/AjoutSpectacle"
@@ -31,8 +30,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/PlanningPerso"
-        android:layout_below="@+id/AjoutSpectacle"
+        android:layout_below="@+id/BoutonGenererPlanningOptimise"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vider le planning"
+        android:id="@+id/BoutonViderPlanningPerso"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Générer un planning optimisé"
+        android:id="@+id/BoutonGenererPlanningOptimise"
+        android:layout_below="@+id/AjoutSpectacle"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

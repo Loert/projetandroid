@@ -125,6 +125,9 @@ public class FicheSpectacle extends ActionBarActivity implements View.OnClickLis
             //Set response
             dejaNote = true;
             bNotation.setEnabled(false);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
         }
     }
 

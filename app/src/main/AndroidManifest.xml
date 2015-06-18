@@ -40,11 +40,11 @@
         </activity>
         <activity
             android:name=".ajouterspectacle"
-            android:label="@string/title_activity_ajouterspectacle" >
+            android:label="Ajouter un spectacle" >
         </activity>
         <activity
             android:name=".planningpersonnel"
-            android:label="@string/title_activity_planningpersonnel" >
+            android:label="Votre planning" >
         </activity>
         <activity
             android:name=".ListeRestaurant"
@@ -77,6 +77,10 @@
         <activity
             android:name=".PlanningOptimise"
             android:label="@string/title_activity_planning_optimise" >
+        </activity>
+        <activity
+            android:name=".SpectacleAVenir"
+            android:label="Spectacles a venir" >
         </activity>
     </application>
 

@@ -20,4 +20,5 @@
         SelectionneHorairePlanningPerso
     </string>
     <string name="title_activity_planning_optimise">PlanningOptimise</string>
+    <string name="title_activity_spectacle_avenir">SpectacleAVenir</string>
 </resources>

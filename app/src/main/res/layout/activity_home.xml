@@ -30,7 +30,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:alpha="0" />
+        android:alpha="0"
+        android:layout_alignTop="@+id/BoutonPlanning" />
 
     <Button
         android:layout_width="match_parent"
@@ -54,6 +55,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="121dp"
+        android:alpha="0" />
+
+    <Button
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:text="New Button"
+        android:id="@+id/BoutonSpectaclesAVenir"
+        android:layout_alignBottom="@+id/BoutonVoirServices"
+        android:layout_alignLeft="@+id/BoutonVoirPlan"
+        android:layout_alignStart="@+id/BoutonVoirPlan"
         android:alpha="0" />
 
 </RelativeLayout>
