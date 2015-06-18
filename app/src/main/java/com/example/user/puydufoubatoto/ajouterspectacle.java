@@ -1,58 +1,60 @@
 package com.example.user.puydufoubatoto;
-
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
-
 import com.example.user.adapter.ArrayHoraireSpectacleAdapter;
 import com.example.user.adapter.ArraySpectaclesAdapter;
 import com.example.user.entities.Spectacle;
 import com.example.user.webservices.WebServiceSpectacles;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
-public class ajouterspectacle extends ActionBarActivity  {
+public class ajouterspectacle extends ActionBarActivity implements AdapterView.OnItemClickListener {
     String displayText = null;
     List<Spectacle> listeSpectacles = null;
     List<ajouterspectacle> listeHoraire;
     ListView list = null;
     Spinner Horaire = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_spectacles);
         list = (ListView) findViewById(R.id.listeTest);
+        list.setOnItemClickListener(this);
         AsyncCallListeSpectacles task2 = new AsyncCallListeSpectacles();
         task2.execute();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_liste_spectacles, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Spectacle spectacle = (Spectacle)list.getAdapter().getItem(position);
+        Intent i = new Intent(ajouterspectacle.this,SelectionneHorairePlanningPerso.class);
+        i.putExtra("idSpectacle",spectacle.getId());
+        startActivity(i);
     }
 
     private class AsyncCallListeSpectacles extends AsyncTask<String, Void, Void> {
@@ -62,7 +64,6 @@ public class ajouterspectacle extends ActionBarActivity  {
             listeSpectacles = WebServiceSpectacles.invokeListeSpectacle("getListeSpectacle");
             return null;
         }
-
         @Override
         protected void onPostExecute(Void result) {
             //Set response

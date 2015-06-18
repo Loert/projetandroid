@@ -12,4 +12,11 @@
     <string name="title_activity_planningpersonnel">planningpersonnel</string>
     <string name="title_activity_liste_restaurant">ListeRestaurant</string>
     <string name="title_activity_fiche_restaurant">FicheRestaurant</string>
+    <string name="title_activity_planning_perso_sqlite">planningPersoSqlite</string>
+    <string name="title_activity_sqlite_planning">SQLitePlanning</string>
+    <string name="title_activity_spectacle_bdd">SpectacleBDD</string>
+    <string name="title_activity_array_planning_personnel">ArrayPlanningPersonnel</string>
+    <string name="title_activity_selectionne_horaire_planning_perso">
+        SelectionneHorairePlanningPerso
+    </string>
 </resources>

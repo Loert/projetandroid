@@ -35,10 +35,6 @@
             android:label="@string/title_activity_fiche_spectacle" >
         </activity>
         <activity
-            android:name=".Planning"
-            android:label="@string/title_activity_planning" >
-        </activity>
-        <activity
             android:name=".ajouterspectacle"
             android:label="@string/title_activity_ajouterspectacle" >
         </activity>
@@ -53,6 +49,26 @@
         <activity
             android:name=".FicheRestaurant"
             android:label="@string/title_activity_fiche_restaurant" >
+        </activity>
+        <activity
+            android:name=".planningPersoSqlite"
+            android:label="@string/title_activity_planning_perso_sqlite" >
+        </activity>
+        <activity
+            android:name=".SQLitePlanning"
+            android:label="@string/title_activity_sqlite_planning" >
+        </activity>
+        <activity
+            android:name=".SpectacleBDD"
+            android:label="@string/title_activity_spectacle_bdd" >
+        </activity>
+        <activity
+            android:name="com.example.user.adapter.ArrayPlanningPersonnel"
+            android:label="@string/title_activity_array_planning_personnel" >
+        </activity>
+        <activity
+            android:name=".SelectionneHorairePlanningPerso"
+            android:label="@string/title_activity_selectionne_horaire_planning_perso" >
         </activity>
     </application>
 

@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="right"
-        >
+        android:layout_gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Titre du spectacle"
-            android:id="@+id/titreSpectacleMonPlannig"
+            android:text="Mon Spectacle"
+            android:id="@+id/SpectacleNomPlanningPerso"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="#ff000000" />
+            android:textColor="#000000"
+            android:textSize="50px"
+            android:textIsSelectable="false" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Durée du spectacle"
-            android:id="@+id/dureeSpectacleMonPlanning"
-            android:textColor="#ffaf580b"
-            android:layout_alignBottom="@+id/titreSpectacleMonPlannig"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Horaire"
+            android:id="@+id/HoraireSpectaclePlanningPerso"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
+            android:layout_alignParentEnd="true"
+            android:textColor="#000000"
+            android:textSize="40px" />
     </RelativeLayout>
-
 </LinearLayout>
