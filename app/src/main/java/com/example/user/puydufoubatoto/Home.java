@@ -15,6 +15,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
     private Button bListeServices = null;
     private Button bPlanning = null;
     private Button bSpectacleAVenir = null;
+    private Button bAPropos = null;
     private Button bOptimiseTemp = null;
 
     @Override
@@ -26,6 +27,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         bListeSpectacles = (Button) findViewById(R.id.BoutonListeSpectacles);
         bListeServices = (Button) findViewById(R.id.BoutonVoirServices);
         bSpectacleAVenir = (Button) findViewById(R.id.BoutonSpectaclesAVenir);
+        bAPropos = (Button) findViewById(R.id.BoutonAPropos);
         //bOptimiseTemp = (Button) findViewById(R.id.BoutonOptimiseTemp);
         bPlan.setOnClickListener(this);
         bListeSpectacles.setOnClickListener(this);
@@ -34,6 +36,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         bPlanning = (Button) findViewById(R.id.BoutonPlanning);
         bPlanning.setOnClickListener(this);
         bSpectacleAVenir.setOnClickListener(this);
+        bAPropos.setOnClickListener(this);
     }
 
     @Override
@@ -78,6 +81,10 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         }
         else if(view.getId() == R.id.BoutonSpectaclesAVenir){
             Intent i = new Intent(Home.this,SpectacleAVenir.class);
+            startActivity(i);
+        }
+        else if(view.getId() == R.id.BoutonAPropos){
+            Intent i = new Intent(Home.this,Apropos.class);
             startActivity(i);
         }
         /*else if(view.getId() == R.id.BoutonOptimiseTemp){

@@ -21,4 +21,5 @@
     </string>
     <string name="title_activity_planning_optimise">PlanningOptimise</string>
     <string name="title_activity_spectacle_avenir">SpectacleAVenir</string>
+    <string name="title_activity_apropos">A propos du puy du fou</string>
 </resources>

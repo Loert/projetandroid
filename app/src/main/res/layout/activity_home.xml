@@ -67,4 +67,14 @@
         android:layout_alignStart="@+id/BoutonVoirPlan"
         android:alpha="0" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="200px"
+        android:text="New Button"
+        android:id="@+id/BoutonAPropos"
+        android:layout_alignTop="@+id/BoutonSpectaclesAVenir"
+        android:layout_toRightOf="@+id/BoutonVoirPlan"
+        android:layout_toEndOf="@+id/BoutonVoirPlan"
+        android:alpha="0" />
+
 </RelativeLayout>

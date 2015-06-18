@@ -82,6 +82,10 @@
             android:name=".SpectacleAVenir"
             android:label="Spectacles a venir" >
         </activity>
+        <activity
+            android:name=".Apropos"
+            android:label="@string/title_activity_apropos" >
+        </activity>
     </application>
 
 </manifest>
